@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vGK-ga-VWf">
-                                <rect key="frame" x="218" y="150" width="152" height="284"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vGK-ga-VWf">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ct1-Dr-IZU">
                                     <size key="itemSize" width="140" height="180"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -26,8 +26,8 @@
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Mxh-wS-CtY">
-                                        <rect key="frame" x="6" y="74" width="140" height="180"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Person" id="Mxh-wS-CtY" customClass="PersonCell" customModule="Project10" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="74" width="140" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="180"/>
@@ -46,11 +46,25 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="hgc-cW-QYr" id="pPC-ct-p4V"/>
+                                            <outlet property="name" destination="GMN-HC-rDG" id="pdU-R4-FVH"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="1v5-mX-9ba"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="i35-hj-aGM"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vGK-ga-VWf" secondAttribute="bottom" id="7uo-tJ-Owe"/>
+                            <constraint firstItem="vGK-ga-VWf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LPe-f1-aUI"/>
+                            <constraint firstAttribute="trailing" secondItem="vGK-ga-VWf" secondAttribute="trailing" id="hcX-sO-A1K"/>
+                            <constraint firstItem="vGK-ga-VWf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mEb-1t-Oht"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZcP-vx-SWa"/>
                     <connections>
