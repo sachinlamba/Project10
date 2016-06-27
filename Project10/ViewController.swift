@@ -30,7 +30,19 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Person", forIndexPath: indexPath) as! PersonCell
+        
+        let person = people[indexPath.item]
+        
+        cell.name.text = person.name
+        
+        let path = getDocumentsDirectory().stringByAppendingPathComponent(person.image)
+        
+        cell.imageView.image = UIImage(contentsOfFile: path)
+        
+        
+        
         return cell
     }
 
@@ -45,7 +57,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaInfo info: [String : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         var newImage: UIImage
         
         if let possibleImage = info[UIImagePickerControllerEditedImage] as? UIImage {
@@ -81,7 +93,25 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     
-    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let person = people[indexPath.item]
+        
+        let ac = UIAlertController(title: "Rename Person", message: nil, preferredStyle: .Alert)
+        
+        ac.addTextFieldWithConfigurationHandler(nil)
+        
+        ac.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        
+        ac.addAction(UIAlertAction(title: "OK", style: .Default) { [unowned self, ac] _ in
+            let newName = ac.textFields![0]
+            if (newName.text! != "") {
+                person.name = newName.text!
+            }
+            self.collectionView.reloadData()
+        })
+        
+        presentViewController(ac, animated: true, completion: nil)
+    }
     
     
     
